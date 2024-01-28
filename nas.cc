@@ -196,7 +196,7 @@ bool nas::handle_attach_request(uint32_t                enb_ue_s1ap_id,
       nas::handle_guti_attach_request_known_ue(
           nas_ctx, enb_ue_s1ap_id, enb_sri, attach_req, pdn_con_req, nas_rx, args, itf);
     } else {
-      return true;
+      return false;
     }
   }
   return true;
@@ -273,7 +273,7 @@ bool nas::handle_imsi_attach_request_unknown_ue(uint32_t                        
                                  nas_ctx->m_sec_ctx.xres)) {
     srsran::console("User not found. IMSI %015" PRIu64 "\n", nas_ctx->m_emm_ctx.imsi);
     nas_logger.info("User not found. IMSI %015" PRIu64 "", nas_ctx->m_emm_ctx.imsi);
-    return true;
+    return false;
   }
 
   // Allocate eKSI for this authentication vector
